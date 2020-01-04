@@ -89,7 +89,7 @@ Maybe change the hour, minute, and day-of-month values in the crontab too.
 A restore bundle contains all the files necessary to restore from the configured restic repo.
 
 ```sh
-( umask 077 && sudo tar -C /opt/ -cvJf- --exclude-caches --exclude bin restic > restic-bundle-for-$HOSTNAME.tar.xz )
+( umask 077 && sudo tar -C /opt/ -cvJf- --exclude-caches --exclude bin restic-wrapper-b2 > restic-bundle-for-$HOSTNAME.tar.xz )
 ```
 
 WARNING: this bundle will contain your B2 credentials and repo password! You should probably encrypt it.
