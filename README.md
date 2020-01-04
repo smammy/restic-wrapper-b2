@@ -25,10 +25,16 @@ crontab      - Example crontab to run backup.sh and check.sh.
 
 ## Setup
 
-### Clone this repository
+### Clone this repo
 
 ```sh
 git clone https://github.com/smammy/restic-wrapper /opt/restic
+```
+
+### Set up your Restic repo
+
+```sh
+/opt/restic-wrapper-b2/wrapper.sh init
 ```
 
 ### Add configuration
@@ -50,6 +56,24 @@ echo <<'EOT' > exclude
 /var/cache
 /var/tmp
 EOT
+```
+
+### Test connection
+
+```sh
+/opt/restic-wrapper-b2/wrapper.sh stats
+```
+
+### Test backup
+
+```
+/opt/restic-wrapper-b2/backup.sh
+```
+
+### Test repo check
+
+```
+/opt/restic-wrapper-b2/check.sh
 ```
 
 ### Install crontab
