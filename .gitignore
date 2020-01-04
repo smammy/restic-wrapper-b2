@@ -1,0 +1,9 @@
+/bin/*
+/cache/*
+!/cache/CACHEDIR.TAG
+/conf/b2-id
+/conf/b2-key
+/conf/dirs
+/conf/exclude
+/conf/pass
+/conf/repo
