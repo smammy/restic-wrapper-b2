@@ -1,0 +1,2 @@
+37 3  * * * root chronic /opt/restic-wrapper-b2/backup.sh
+37 3 22 * * root chronic /opt/restic-wrapper-b2/check.sh

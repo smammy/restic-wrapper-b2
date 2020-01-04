@@ -5,7 +5,7 @@
 ```
 README.md    - this file
 
-bin/         - Restic static binary dir (all arches).
+bin/         - Restic binary dir.
 cache/       - Local repo cache dir.
 conf/b2-id   - Backblaze B2 Application Key ID.
 conf/b2-key  - Backblaze B2 Application Key.
@@ -19,6 +19,8 @@ backup.sh    - Run a backup and prune existing backups.
 check.sh     - Verify existing backups.
 wrapper.sh   - Convenience wrapper; reads configuration and fetches/runs
                restic binary appropriate for the current arch and OS.
+
+crontab      - Example crontab to run backup.sh and check.sh.
 ```
 
 ## Setup
@@ -32,14 +34,17 @@ git clone https://github.com/smammy/restic-wrapper /opt/restic
 ### Add configuration
 
 ```sh
-cd /opt/restic
+cd /opt/restic/conf
 
-echo "b2:your-b2-bucket-name:" > conf/repo
-echo "your restic repo password" > conf/pass
-echo "your b2 app key id" > conf/b2-id
-echo "your b2 app key" > conf/b2-key
-echo "/" > conf/dirs
-echo <<'EOT' > conf/exclude
+touch b2-key pass
+chmod 600 b2-key pass
+
+echo "b2:your-b2-bucket-name:" > repo
+echo "your restic repo password" > pass
+echo "your b2 app key id" > b2-id
+echo "your b2 app key" > b2-key
+echo "/" > dirs
+echo <<'EOT' > exclude
 /home/*/.cache
 /tmp
 /var/cache
@@ -52,6 +57,8 @@ EOT
 ```sh
 cp crontab /etc/cron.d/restic
 ```
+
+Maybe change the hour, minute, and day-of-month values in the crontab too.
 
 ## Generating a restore bundle
 
